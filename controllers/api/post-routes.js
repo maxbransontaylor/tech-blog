@@ -11,4 +11,35 @@ router.get("/", (req, res) => {
     })
     .catch((err) => console.log(err));
 });
+router.get("/:id", (req, res) => {
+  Post.findOne({
+    where: { id: req.params.id },
+    include: [{ model: User }, { model: Comment }],
+  })
+    .then((post) => res.json(post))
+    .catch((err) => console.log(err));
+});
+router.post("/", (req, res) => {
+  Post.create({
+    title: req.body.title,
+    post_content: req.body.post_content,
+  })
+    .then((response) => res.json(response))
+    .catch((err) => console.log(err));
+});
+router.put("/:id", (req, res) => {
+  Post.update(
+    { title: req.body.title, post_content: req.body.post_content },
+    { where: { id: req.params.id } }
+  )
+    .then((data) => res.json(data))
+    .catch((err) => {
+      console.log(err);
+    });
+});
+router.delete("/:id", (req, res) => {
+  Post.destroy({ where: { id: req.params.id } })
+    .then((response) => res.json(response))
+    .catch((err) => console.log(err));
+});
 module.exports = router;
