@@ -43,5 +43,13 @@ router.post("/logout", (req, res) => {
     res.status(404).end();
   }
 });
+router.get("/:id", (req, res) => {
+  User.findOne({
+    where: { id: req.params.id },
+    include: [{ model: Post }, { model: Comment }],
+  })
+    .then((data) => res.json(data))
+    .catch((err) => console.log(err));
+});
 router.post("/signup", (req, res) => {});
 module.exports = router;
