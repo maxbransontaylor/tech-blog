@@ -11,6 +11,10 @@ async function deleteHandler(event) {
       alert(response.statusText);
     }
   }
+  if (event.target.matches(".edit")) {
+    const id = event.target.dataset.editid;
+    document.location.replace(`/edit/${id}`);
+  }
 }
 
 document.querySelector("#your-posts").addEventListener("click", deleteHandler);

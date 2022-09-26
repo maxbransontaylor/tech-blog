@@ -6,13 +6,11 @@
   </div>
 
   <div>
-    <button type="submit">add comment</button>
-    <button type="button" class="upvote-btn">upvote</button>
+    <button class="btn btn-primary" type="submit">add comment</button>
   </div>
 </form>
 {{/if}}
 {{>comment plainPost.comments}}
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
-<script src="/javascript/upvote.js"></script>
 {{/if}}
