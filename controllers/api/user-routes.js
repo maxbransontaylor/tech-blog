@@ -18,18 +18,23 @@ router.post("/", (req, res) => {
     });
 });
 router.post("/login", (req, res) => {
+  console.log(req.body.username);
   User.findOne({ where: { username: req.body.username } }).then((userdate) => {
     if (!userdate) {
       res.json({ message: "user not found" });
     }
-    if (!userdate.checkPassword(req.body.password)) {
-      res.json({ message: "incorrect password" });
+    const passwordtrue = userdate.checkPassword(req.body.password) || false;
+    if (!passwordtrue) {
+      res.status(400).json({ message: "incorrect password" });
       return;
     }
     req.session.save(() => {
       req.session.user_id = userdate.id;
       req.session.username = userdate.username;
       req.session.loggedIn = true;
+      console.log(
+        "``````````````````````````loggedIn - treu`````````````````````````````````````````"
+      );
       res.json({ user: userdate, message: "login success" });
     });
   });

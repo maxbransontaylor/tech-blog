@@ -10,29 +10,32 @@ async function seed() {
     { username: "jamantha", password: "password123" },
   ]);
   console.log("user seeded");
-  await Post.bulkCreate([
-    {
-      title: "very cool post",
-      post_content: "i just think it is very cool",
-      user_id: 1,
-    },
-    {
-      title: "i just love posting",
-      post_content: "it is my favorite past time",
-      user_id: 2,
-    },
-    {
-      title: "thank goodness for posting",
-      post_content: "if i couldnt post i dont know what id do",
-      user_id: 3,
-    },
-    {
-      title: "POOOOOOSSSSSSSSTTTTTTTTTTT",
-      post_content:
-        "AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH",
-      user_id: 4,
-    },
-  ]);
+  await Post.bulkCreate(
+    [
+      {
+        title: "very cool post",
+        post_content: "i just think it is very cool",
+        user_id: 1,
+      },
+      {
+        title: "i just love posting",
+        post_content: "it is my favorite past time",
+        user_id: 2,
+      },
+      {
+        title: "thank goodness for posting",
+        post_content: "if i couldnt post i dont know what id do",
+        user_id: 3,
+      },
+      {
+        title: "POOOOOOSSSSSSSSTTTTTTTTTTT",
+        post_content:
+          "AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH",
+        user_id: 4,
+      },
+    ],
+    { individualHooks: true }
+  );
   console.log("post seeded");
   await Comment.bulkCreate([
     {
