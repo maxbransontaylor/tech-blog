@@ -35,7 +35,7 @@ router.get("/dashboard", withAuth, (req, res) => {
       return post.get({ plain: true });
     });
     console.log(req.session.loggedIn);
-    res.render("home", { posts, loggedIn: req.session.loggedIn });
+    res.render("dashboard", { posts, loggedIn: req.session.loggedIn });
   });
 });
 module.exports = router;

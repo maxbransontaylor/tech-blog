@@ -5,10 +5,18 @@
             <div class="card-body">
                <p> {{post_content}}</p>
             </div>
+            {{#if user.username}}
             <div class="card-footer">
                  by {{user.username}} on
                 {{created_at}}
                 |
                 <a href="/post/{{id}}">{{comments.length}}  comment(s)</a>
             </div>
+            {{else}}
+            <div class="card-footer">
+                <button class="edit" data-editid="{{id}}">Edit</button>
+                <button class="delete" data-deleteid="{{id}}">Delete</button>
+                
+            </div>
+            {{/if}}
         </article>

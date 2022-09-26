@@ -1,0 +1,22 @@
+<div class="container">
+    <h3>Create Post</h3>
+    <form>
+        <div>
+        <label class="form-label" for="post-title">Post Title:</label>
+        <input class="form-control" type="text" id="post-title" />
+          </div>
+          <div>
+        <label class="form-label" for="post-content">Post Content</label>
+        <input class="form-control" type="text" id="post-content" />
+          </div>
+          <button class="btn btn-primary" type="submit">Create</button>
+    </form>
+  <div id="your-posts">
+    <h3>Your Posts</h3>
+    {{#each posts as |post|}}
+    {{>post-info post}}
+    {{/each}}
+  </div>
+</div>
+<script src="/javascript/post.js"></script>
+<script src="/javascript/delete.js"></script>
