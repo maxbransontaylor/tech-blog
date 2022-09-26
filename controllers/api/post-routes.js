@@ -20,7 +20,6 @@ router.get("/:id", (req, res) => {
     .catch((err) => console.log(err));
 });
 router.post("/", (req, res) => {
-  console.log("posty");
   Post.create({
     title: req.body.title,
     post_content: req.body.post_content,

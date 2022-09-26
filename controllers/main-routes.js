@@ -38,6 +38,7 @@ router.get("/dashboard", withAuth, (req, res) => {
     res.render("dashboard", { posts, loggedIn: req.session.loggedIn });
   });
 });
+//threw in this route for users to edit posts, but currently is not secure as any user can access this route
 router.get("/edit/:id", withAuth, (req, res) => {
   Post.findOne({
     where: { id: req.params.id },

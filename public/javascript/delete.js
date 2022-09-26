@@ -11,6 +11,7 @@ async function deleteHandler(event) {
       alert(response.statusText);
     }
   }
+  //the edit button handling is also in here to redirect the user
   if (event.target.matches(".edit")) {
     const id = event.target.dataset.editid;
     document.location.replace(`/edit/${id}`);
